@@ -1,0 +1,42 @@
+{
+  "name": "isurf",
+  "version": "0.0.0",
+  "description": "Check internet connection and notify",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "watch": "webpack --watch",
+    "build": "webpack --progress --mode=production",
+    "test": "mocha test",
+    "release:before": "npm run-script test",
+    "release:major": "webpack --env.major --mode=production && npm run-script release:publish",
+    "release:minor": "webpack --env.minor --mode=production && npm run-script release:publish",
+    "release:patch": "webpack --env.patch --mode=production && npm run-script release:publish",
+    "release:publish": "git commit -a -m BUILD && version-to-tag.sh && npm publish"
+  },
+  "keywords": [
+    "internet",
+    "connection",
+    "check",
+    "notify",
+    "modal",
+    "message",
+    "alert",
+    "popup"
+  ],
+  "author": "Fabio Ricali",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/register": "^7.10.4",
+    "jsdom": "^16.2.2",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^8.0.1",
+    "unminified-webpack-plugin": "^2.0.0",
+    "webpack": "^4.43.0",
+    "webpack-auto-inject-version": "^1.2.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
